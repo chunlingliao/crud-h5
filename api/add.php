@@ -1,10 +1,16 @@
 <?php
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: *');
+header('Access-Control-Allow-Headers: X-Requested-With, Content-Type, Accept');
+ 
 
 $fname = "test.txt";
 switch (true) {
     case (!isset($_POST['name'])):
     case (!isset($_POST['birthday'])):
     case (!isset($_POST['age'])):
+        print_r($_POST);
+        print_r($_GET);
         echo json_encode(["code" => 400, "data" => [], "error" => "缺少參數"], true);
         exit();
 }

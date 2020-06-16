@@ -1,0 +1,323 @@
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <title>TableList</title>
+    <script>
+        
+    </script>
+  </head>
+
+  <body>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+  </body>
+
+  <!-- <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">姓名</th>
+        <th scope="col">生日</th>
+        <th scope="col">年齡</th>
+        <th scope="col">
+          <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#exampleModal">
+            新增
+          </button>
+        </th>
+      </tr>
+    </thead>
+    <tbody class="table-all">
+    </tbody>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>1/11</td>
+        <td>20</td>
+        <td>
+          <button class="btn btn-outline-info" data-toggle="modal" data-target="#updateModal">修改</button>
+          <button class="btn btn-outline-warning">刪除</button>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>2/22</td>
+        <td>25</td>
+        <td>
+          <button class="btn btn-outline-info">修改</button>
+          <button class="btn btn-outline-warning">刪除</button>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Larry</td>
+        <td>3/33</td>
+        <td>30</td>
+        <td>
+          <button class="btn btn-outline-info">修改</button>
+          <button class="btn btn-outline-warning">刪除</button>
+        </td>
+      </tr>
+    </tbody>
+  </table> -->
+
+  <!-- 新增彈窗 -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">新增資料</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default">name</span>
+            </div>
+            <input type="text" value="" id="name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default">birthday</span>
+            </div>
+            <input type="text" value="" id="birthday" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default">age</span>
+            </div>
+            <input type="text" value="" id="age" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+          <button type="submit" class="btn btn-primary" onclick="addRow()">完成</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 修改彈窗 -->
+  <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">編輯資料</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default">name</span>
+            </div>
+            <input type="text" value="" id="updatename" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default">birthday</span>
+            </div>
+            <input type="text" value="" id="updatebirthday" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default">age</span>
+            </div>
+            <input type="text" value="" id="updateage" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+          <button type="submit" id="updatedowm" class="btn btn-primary" onclick="updateRow(event)">完成</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <table class="table" id="producttable">
+  <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">姓名</th>
+        <th scope="col">生日</th>
+        <th scope="col">年齡</th>
+        <th scope="col">
+          <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#exampleModal">
+            新增
+          </button>
+        </th>
+      </tr>
+  </thead>
+  <tbody>
+    <!-- 在這裡可以選擇性地包括既有資料 -->
+  </tbody>
+</table>
+
+<template id="productrow">
+  <tr>
+    <td class="record"></td>
+    <td class="name"></td>
+    <td class="birthday"></td>
+    <td class="age"></td>
+    <td>
+      <button class="btn btn-outline-info" data-toggle="modal" data-target="#updateModal" onclick="getRow(event,this)">修改</button>
+      <button class="btn btn-outline-warning" onclick="deleteRow(event)">刪除</button>
+    </td>
+  </tr>
+</template> 
+
+</html>
+
+<script>
+
+var selectObj;
+var arr = [
+    { 
+      id: 1,
+      name:'Mark',
+      birthday:'1/11',
+      age:'20'
+    },
+    { 
+      id: 2,
+      name:'Jacob',
+      birthday:'2/22',
+      age:'22'
+    },
+    { 
+      id: 3,
+      name:'Larry',
+      birthday:'3/33',
+      age:'33'
+    }
+  ]
+
+
+// 透過檢查 HTML template 元素屬性的存在與否，以測試瀏覽器是否支援它
+if ('content' in document.createElement('template')) {
+
+var tb = document.querySelector("tbody");
+
+// 使用現有 HTML tbody、行以及模板，來畫出表格
+var t = document.querySelector('#productrow'),
+td = t.content.querySelectorAll("td");
+tr = t.content.querySelector("tr");
+
+// 複製新的行並將其插至表格
+for (var i = 0; i < arr.length; i++) {
+  rowid = document.querySelector("tbody").querySelectorAll("tr").length + 1 
+  tr.id = "productrow-" + rowid;
+  // tr.dataset.rowid = rowid;
+  td[0].textContent = rowid;
+  td[1].textContent = arr[i].name;
+  td[2].textContent = arr[i].birthday;
+  td[3].textContent = arr[i].age;
+  tb.appendChild(document.importNode(t.content, true));
+}
+
+} else {
+// 因為 HTML template 不被支援，所以要用其他方法在表格增加新行
+}
+
+function addRow() {
+  //增加一行
+  rowid = document.querySelector("tbody").querySelectorAll("tr").length + 1 
+  tr.id = "productrow-" + rowid;
+  td[0].textContent = rowid;
+  td[1].textContent = document.querySelector('#name').value;
+  td[2].textContent = document.querySelector('#birthday').value;
+  td[3].textContent = document.querySelector('#age').value;
+  // 把值加進去
+  tb.appendChild(document.importNode(t.content, true));
+  $('#exampleModal').modal('hide')
+}
+
+function getRow(event,_this) {
+  console.log('event:',parseInt(event.target.parentNode.parentNode.id.split('-')[1]))
+  selectObj = $(_this).parents('tr')
+  console.log('selectObj:',selectObj)
+  // for (var i = 0; i < arr.length; i++) {
+    // console.log('>>', arr[i].id === parseInt(event.target.parentNode.parentNode.id.split('-')[1]))
+    // if(arr[i].id === parseInt(event.target.parentNode.parentNode.id.split('-')[1])){
+      // rowid = arr[i].id;
+      console.log(selectObj.find('.name').text())
+      // document.getElementById("updatedowm").classList.add("MyClassButton-" + arr[i].id);
+      document.querySelector('#updatename').value = selectObj.find('.name').text();
+      document.querySelector('#updatebirthday').value = selectObj.find('.birthday').text();
+      document.querySelector('#updateage').value = selectObj.find('.age').text();
+    // }
+  // }
+}
+
+function updateRow(event) {
+  // for (var i = 0; i < arr.length; i++) {
+  //   if(arr[i].id === parseInt(event.target.parentNode.parentNode.id.split('-')[1])){
+  //     arr[i].name = document.querySelector('#updatename').value;
+  //   }
+  //   console.log(arr[i].id, event.target)
+  // }
+  
+  console.log(document.querySelector('#updatename').value)
+  selectObj.find('.record').text()
+  selectObj.find('.name').text(document.querySelector('#updatename').value)
+  selectObj.find('.birthday').text(document.querySelector('#updatebirthday').value)
+  selectObj.find('.age').text(document.querySelector('#updateage').value)
+  $('#updateModal').modal('hide')
+  // console.log(event.target.parentNode.parentNode.id)
+}
+
+function deleteRow(event) {
+  event.target.parentNode.parentNode.remove();
+  console.log(event)
+}
+
+
+  // function makeElement(tag, className, text) {
+  //     var el = document.createElement(tag);
+  //     el.classList.add(className);
+  //     el.textContent = text;
+  //     if (text) {
+  //       el.textContent = text;
+  //     }
+  //     return el;
+  // }
+
+  // function createTable(data) {
+  //   var col = makeElement('tr', 'data');
+  //   var row0 = makeElement('th','id', data.id);
+  //   col.appendChild(row0);
+  //   var row1 = makeElement('th','name', data.name);
+  //   col.appendChild(row1);
+  //   var row2 = makeElement('th', 'birthday', data.birthday);
+  //   col.appendChild(row2);
+  //   var row3 = makeElement('th', 'age', data.age);
+  //   col.appendChild(row3);
+  //   return col;
+  // }
+
+  // var tableList = document.querySelector('.table-all');
+  // for (var i = 0; i < arr.length; i++) {
+  //   var tableItem = createTable(arr[i]);
+  //   tableList.appendChild(tableItem); 
+  // }
+
+  // var divTag = document.querySelector('.buttonTag');
+  // for(var j = 1; j < arr.length; j++){
+  //   var btnTag = document.createElement('button'); //做一個 button tag
+  //   divTag.appendChild(btnTag); //放入 div tag 中
+  // }
+
+</script>

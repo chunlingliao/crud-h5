@@ -1,4 +1,9 @@
 <?php
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
+header('Access-Control-Allow-Headers: X-Requested-With, Content-Type, Accept');
+ 
+
 switch (true) {
     case (!isset($_POST['id'])):
         echo json_encode(["code" => 400, "data" => [], "error" => "缺少參數"], true);
